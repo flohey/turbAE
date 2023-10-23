@@ -5,7 +5,7 @@ Convolutional Autoencoder (AE) for e.g., two-dimensional turbulent fluid flows. 
 - Two-dimensinal Rayleigh-Bénard convection at ${\rm Ra}= 10^6$ and ${\rm Pr}= 10$ in a rectangular box with aspect ratio $\Gamma = L_X/H = 4$. The boundary conditions were free-slip and constant temperature.
 
 ## Manual
-For a tutorial, see the prepared IPython Notebook `tutorial.ipynb` under /examples/two_dimensional_rbc/
+For a tutorial, see the prepared IPython Notebook `tutorial.ipynb` under /examples/two_dimensional_rbc/. Moreover, a post-processing script for the trained Autoencoder network is provided in `read_trained_AE.ipynb` (same directory).
 
 ## Introduction to Autoencoders
 Autoencoders are feed-forward neural networks that map an input back to itself. In the course of a classical Autoencoder network, the input dimension is drastically reduced, yielding a reduced-order representation of the original input.
@@ -19,10 +19,11 @@ For a first introduction, see e.g.:
 ## Requirements
 Stable for
 - `python `>=  3.6.0
-- `torch`  >= 1.10.0
 - `numpy`  >= 1.20.1
-- `h5py`   >= 2.10.0 
-- `pyyaml` >= 6.0
-- `torchsummary` >= 1.5.1
+- `matplotlib` >= 3.6.2
+- `torch`  >= 1.10.0      (see https://pytorch.org/get-started/locally/ )
+- `h5py`   >= 2.10.0      (pip install h5py) 
+- `PyYAML` >= 6.0         (pip install pyyaml)
+- `torchsummary` >= 1.5.1 (pip install torchsummary)
 
 
