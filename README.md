@@ -1,5 +1,5 @@
 # turbAE
-Convolutional Autoencoder for e.g., two-dimensional turbulent fluid flows. Besides an example, a helper class for keeping track of all hyperparameters and file paths is provided in the `ae_class.py` file.
+Convolutional Autoencoder (AE) for e.g., two-dimensional turbulent fluid flows. Besides an example, a helper class for keeping track of all hyperparameters and file paths is provided in the `ae_class.py` file. The AE is implemented using the PyTorch library.
 
 ## Examples
 - Two-dimensinal Rayleigh-Bénard convection at ${\rm Ra}= 10^6$ and ${\rm Pr}= 10$ in a rectangular box with aspect ratio $\Gamma = L_X/H = 4$. The boundary conditions were free-slip and constant temperature.
