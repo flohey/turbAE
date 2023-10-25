@@ -14,7 +14,7 @@ from torch.utils.data import DataLoader
 from torchsummary import summary
 from torchvision.transforms import Lambda
 
-sys.path.append('/../../')   # adapt to path where ae_class.py is situated
+sys.path.append(os.getcwd()+'/../../')   # adapt to path where ae_class.py is situated
 from ae_class import AE
 
 def run(config):
@@ -93,8 +93,11 @@ def run(config):
     # -------------------------------------
     # 3. Compile Model
     # -------------------------------------
-    model = nn_module.Autoencoder(config).to(cuda)
-    print(summary(model, (ae.nfields, ae.ny, ae.nx), device=device))
+    model = nn_module.Autoencoder(config)
+    
+    print(summary(model, (ae.nfields, ae.ny, ae.nx), device="cpu"))
+
+    model = model.to(cuda)
 
     if sys.platform != "darwin":
         # DataParallel copies model to each GPU (on single machine) and scatters input data on batch dim across GPUs
