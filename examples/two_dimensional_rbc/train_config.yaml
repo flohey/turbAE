@@ -1,0 +1,58 @@
+#--------------------------------------------
+# CONFIG FILE FOR Autoencoder of 2D RBC DATA
+#--------------------------------------------
+
+# General Parameters
+#---------------------
+model_name: "nn"          # name of model .py file
+dataset_name: "dataset"   # name of dataset file
+subdir_str: ""            # sub-dir in base_dir where the trained model will be saved to, useful for e.g. scanning different hyperparameters
+
+# I. Training Parameters 
+#-----------------------
+trainingLength: 8000
+validationLength: 1000
+testingLength: 1000          # not used in train.py
+batch_size: 128
+num_epochs: 4000
+encoding_dim: 32
+learning_rate: 1.0e-5        
+lr_lambda: 1.0               # learning rate scheduler lambda factor
+weight_decay: 1.0e-6         # L2 penalty in Adam optimizer
+n_epoch_stop: 50             # early stopping after n_epoch_stop epochs of no validation improvement
+randomSeed: 42
+shuffle_train: true
+shuffle_val: true
+
+# II. Network Parameters
+#----------------------------
+latent_activation: "sigmoid"     # last activation function in the Encoder
+activation: "elu"                # convolutional layer activation function, e.g. "relu", "celu", "prelu"
+p_conv: 0.15
+p_lin: 0.00
+size_factor: 3   # ignored if channel_list is specified
+channel_list:    # no. of output channels after each Down block in the Encoder
+        - 4
+        - 8
+        - 16
+        - 32
+kernel_size: 3            # size of convolutional kernel
+num_conv: 4               # number of convolutions per Up/Down block
+use_instance_norm: false  # whether to use InstanceNorm or BatchNorm
+
+
+#--- # Don't change unless data changes
+fields_use:  # which fields to use for AE, 0: ux, 1: uy, 2: T
+  - 0
+  - 1
+  - 2
+nx: 128
+ny: 32
+aspect: 4
+dataset_path: ''           # dir of dataset .py file
+model_path:   ''             # dir of model
+datapath:     'data/RBC_A4Ra1e6Pr10_fs.npy'  # path to RBC data               
+                 
+filepath_minmax:  'data/RBC_A4Ra1e6Pr10_fs_minmax.hdf5' # path to RBC min-max .hdf5 file
+base_dir:         'trained_models/'     # dir, where trained weights should be saved to
+use_cuda: true  # whether to use GPU
